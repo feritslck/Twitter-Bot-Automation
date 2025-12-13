@@ -1,7 +1,7 @@
 {
   "name": "twitter-bot",
   "version": "1.0.0",
-  "description": "Twitter alıntı botu",
+  "description": "Otomatik Twitter botu, belirli zamanlarda tweet atar.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
