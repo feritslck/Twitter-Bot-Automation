@@ -1,4 +1,3 @@
 tweepy
-schedule
 requests
 python-dotenv
