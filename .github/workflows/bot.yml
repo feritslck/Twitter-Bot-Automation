@@ -34,4 +34,4 @@ jobs:
           QUOTE_TEXT: ${{ secrets.QUOTE_TEXT }}           
           
         # Sizin ana bot dosyanızın adı neyse buraya onu yazın (Örn: python bot.py)
-        run: python bot1_temiz.py
+        run: python final_bot.py
