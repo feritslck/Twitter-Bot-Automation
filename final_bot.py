@@ -1,5 +1,4 @@
 import tweepy
-import schedule
 import time
 import os
 # random kütüphanesine artık gerek yok, sıralı ilerleyeceğiz.
@@ -131,7 +130,3 @@ sequential_ayet_twitle()
 schedule.every().hour.at(":00").do(sequential_ayet_twitle)
 print("Bot çalışmaya başladı. Twitler saat başı sırayla atılacaktır.")
 print("Çıkmak için Ctrl+C'ye basın.")
-
-while True:
-    schedule.run_pending()
-    time.sleep(1)
