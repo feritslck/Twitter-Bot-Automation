@@ -127,6 +127,6 @@ def sequential_ayet_twitle():
 print("Hemen bağlantı testi yapılıyor...")
 sequential_ayet_twitle()
 
-schedule.every().hour.at(":00").do(sequential_ayet_twitle)
 print("Bot çalışmaya başladı. Twitler saat başı sırayla atılacaktır.")
 print("Çıkmak için Ctrl+C'ye basın.")
+
