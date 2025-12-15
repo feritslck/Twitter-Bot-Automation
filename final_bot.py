@@ -122,13 +122,7 @@ def sequential_ayet_twitle():
 
         twit_at(api_client, ayet)
         # Yeni değeri hesapla
-yeni_index = mevcut_index + 1
 
-# index.txt dosyasını yeni değerle güncelle ve kaydet
-with open("index.txt", "w") as f:
-    f.write(str(yeni_index))
-
-print(f"BAŞARILI: Index değeri {mevcut_index} -> {yeni_index} olarak güncellendi.")
 
 # --- 7. Botu Başlatma ve Zamanlama ---
 
@@ -137,6 +131,7 @@ sequential_ayet_twitle()
 
 print("Bot çalışmaya başladı. Twitler saat başı sırayla atılacaktır.")
 print("Çıkmak için Ctrl+C'ye basın.")
+
 
 
 
