@@ -7,14 +7,13 @@ on:
     - cron: '0 7,14,19 * * *'
 jobs:
   tweet:
-    runs-on: ubuntu latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Python Kurulumu
         uses: actions/setup-python@v5
         with:
           python-version: '3.11' # Kullandığınız Python sürümünü kontrol edin
-
       - name: Gerekli Kütüphaneleri Yükleme
         # Bu komut, requirements.txt dosyasındaki kütüphaneleri yükler (Eğer varsa)
         run: pip install -r requirements.txt 
