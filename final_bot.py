@@ -4,10 +4,10 @@ import os
 # random kütüphanesine artık gerek yok, sıralı ilerleyeceğiz.
 
 # --- 1. API Kimlik Bilgileri (TWITTER) ---
-CONSUMER_KEY = "bMsMwYARKH8uLu1sCH4VckOsP"
-CONSUMER_SECRET = "ebMXBnalJAIGZttULmMiBW2JrL0dmRKdAUEDznlLIharUdGsky"
-ACCESS_TOKEN = "1999944941955608576-vAhvR6AVO6tSL0IBNC34FpEeQYF5Bt"
-ACCESS_TOKEN_SECRET = "mCCqj5jw2Zavo4awNFY5qtLHwTXJb3h23v7unKeI5pJXu"
+CONSUMER_KEY = "39z5TI0sAh69M6kqHw4sUZhbi"
+CONSUMER_SECRET = "AJ5mhmSYgMIhIT7Us7itCPGpOxkFGsH6qJleNQTbI2gbekJkDW"
+ACCESS_TOKEN = "1999944941955608576-1ZOWhhUWmvdbya6OIkukq0jaYnzNB3"
+ACCESS_TOKEN_SECRET = "x6pJCQ7AZ7s7JSFKb8otB3jgD4mzwODHu74szWqfT82Zk"
 
 # --- 2. İndeks ve Dosya Tanımlamaları ---
 INDEX_FILE = "index.txt"
@@ -129,4 +129,5 @@ sequential_ayet_twitle()
 
 print("Bot çalışmaya başladı. Twitler saat başı sırayla atılacaktır.")
 print("Çıkmak için Ctrl+C'ye basın.")
+
 
