@@ -1,43 +1,41 @@
 name: Python Twitter Bot
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # Manuel çalıştırmak için
   schedule:
-    # # TSİ 10:00, 17:00 ve 22:00'de çalışır (UTC saatleri 7, 14 ve 19'a karşılık gelir)
+    # TSİ 10:00, 17:00 ve 22:00 (UTC 07:00, 14:00, 19:00)
     - cron: '0 7,14,19 * * *'
 
 jobs:
-  tweet:
+  build:
     runs-on: ubuntu-latest
+    permissions: # Dosya değişikliğini kaydetmek için izin
+      contents: write
+    
     steps:
-      - uses: actions/checkout@v4
-      - name: Python Kurulumu
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11' # Kullandığınız Python sürümünü kontrol edin
-      - name: Gerekli Kütüphaneleri Yükleme
-        # Bu komut, requirements.txt dosyasındaki kütüphaneleri yükler (Eğer varsa)
-        run: pip install -r requirements.txt
+      - name: Depoyu Kontrol Et
+        uses: actions/checkout@v3
 
-      - name: Tweet Atma
+      - name: Python Kur
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Kütüphaneleri Kur
+        run: pip install tweepy
+
+      - name: Botu Çalıştır
         env:
-          # PYHTON KODUNUZA UYGUN DEĞİŞKEN İSİMLERİ (CONSUMER_KEY VB.)
-          CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
-          CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
+          API_KEY: ${{ secrets.API_KEY }}
+          API_KEY_SECRET: ${{ secrets.API_KEY_SECRET }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
-
-          # YER TUTUCULAR
-          TARGET_USERNAME: ${{ secrets.TARGET_USERNAME }}
-          QUOTE_TEXT: ${{ secrets.QUOTE_TEXT }}
-
-        # Sizin ana bot dosyanızın adı neyse buraya onu yazın (Örn: python bot.py)
         run: python final_bot.py
 
-      - name: Commit and Push Index File
+      - name: İndeksi Güncelle (Git Commit)
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
           git add index.txt
-          git commit -m "Auto-increment index after tweet" || exit 0
+          git commit -m "İndeks güncellendi: $(cat index.txt)" || echo "Değişiklik yok"
           git push
