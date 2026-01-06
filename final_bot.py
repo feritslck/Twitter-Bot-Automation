@@ -9,24 +9,23 @@ ACCESS_TOKEN_SECRET = os.getenv("ACCESS_TOKEN_SECRET")
 
 def run_bot():
     try:
+        # v1.1 AUTH (Yetkilendirme için v1.1 kullanıp v2 üzerinden tweet atacağız)
+        auth = tweepy.OAuth1UserHandler(API_KEY, API_KEY_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+        api_v1 = tweepy.API(auth)
+        
+        # v2 Client
         client = tweepy.Client(
-            consumer_key=API_KEY,
-            consumer_secret=API_KEY_SECRET,
-            access_token=ACCESS_TOKEN,
-            access_token_secret=ACCESS_TOKEN_SECRET
+            consumer_key=API_KEY, consumer_secret=API_KEY_SECRET,
+            access_token=ACCESS_TOKEN, access_token_secret=ACCESS_TOKEN_SECRET
         )
-        
-        # TEST TWEETİ (İndexle uğraşmadan direkt deniyoruz)
-        test_mesaj = "Sistem kontrolü. Test No: 1"
-        print(f"Deneme yapılıyor: {test_mesaj}")
-        
-        response = client.create_tweet(text=test_mesaj)
-        print(f"BAŞARILI! Tweet ID: {response.data['id']}")
+
+        print("Bağlantı deneniyor...")
+        # Bu yöntem bazen 403 engelini aşar
+        client.create_tweet(text="Sistem doğrulama testi.")
+        print("BAŞARILI: Tweet gönderildi!")
 
     except Exception as e:
-        print("\n--- TWITTER'IN GÖNDERDİĞİ GERÇEK HATA ---")
-        print(e)
-        print("----------------------------------------\n")
+        print(f"HATA DETAYI: {e}")
 
 if __name__ == "__main__":
     run_bot()
