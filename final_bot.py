@@ -1,4 +1,23 @@
-# ... (Önceki bağlantı kodları aynı kalacak)
+import tweepy
+import os
+
+# GitHub Secrets'tan anahtarları çekiyoruz
+API_KEY = os.getenv("API_KEY")
+API_KEY_SECRET = os.getenv("API_KEY_SECRET")
+ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
+ACCESS_TOKEN_SECRET = os.getenv("ACCESS_TOKEN_SECRET")
+
+def run_bot():
+    try:
+        # 1. Twitter'a Bağlan (v2)
+        client = tweepy.Client(
+            consumer_key=API_KEY,
+            consumer_secret=API_KEY_SECRET,
+            access_token=ACCESS_TOKEN,
+            access_token_secret=ACCESS_TOKEN_SECRET
+        )
+
+        # ... (Önceki bağlantı kodları aynı kalacak)
 
         # 2. Ayeti Oku ve Temizle
         with open("meal.txt", "r", encoding="utf-8") as f:
